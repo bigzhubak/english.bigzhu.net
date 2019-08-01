@@ -9,6 +9,12 @@
         </div>
     </div>
     <form @submit.prevent="simulateSubmit" class="q-pa-md">
+      <q-input
+        filled
+        color="teal"
+        hint="youtube url"
+        v-model="youtube"
+      />
       <!-- a simple text field watching for the enter key release -->
       <q-input
         type="textarea"
@@ -51,6 +57,7 @@ export default {
   },
   data: function () {
     return {
+      youtube: '',
       article: '',
       submitting: false,
       oauths: [
@@ -64,9 +71,10 @@ export default {
   methods: {
     simulateSubmit () {
       this.submitting = true
-      axios.post('/api/analysis', { article: this.article }).then(() => {
+      axios.post('/api/Subtitle', { article: this.article, Youtube: this.youtube }).then(() => {
         this.submitting = false
         this.article = ''
+        this.youtube = ''
       }).catch((error) => {
         this.$q.notify(error.response.data)
         this.submitting = false
