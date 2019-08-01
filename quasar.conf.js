@@ -33,6 +33,8 @@ module.exports = function (ctx) {
       // all: true, // --- includes everything; for dev only!
 
       components: [
+        'QSpinnerFacebook',
+        'QInput',
         'QLayout',
         'QHeader',
         'QDrawer',
@@ -81,6 +83,12 @@ module.exports = function (ctx) {
     },
 
     devServer: {
+      proxy: {
+        '/api': {
+          target: 'http://127.0.0.1:3004',
+          changeOrigin: true
+        }
+      },
       // https: true,
       // port: 8080,
       open: true // opens browser window automatically
