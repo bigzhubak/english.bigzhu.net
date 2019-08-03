@@ -8,27 +8,23 @@
           <Oauth :oauths="oauths" />
         </div>
     </div>
-    <form @submit.prevent="simulateSubmit" class="q-pa-md">
+    <form @submit.prevent="simulateSubmit" class="q-pa-md q-gutter-y-md">
       <q-input
-        filled
+        outlined
         color="teal"
-        hint="youtube url"
+        label="URL"
         v-model="youtube"
       />
-      <!-- a simple text field watching for the enter key release -->
+
       <q-input
+        outlined
         type="textarea"
-        filled
         color="teal"
-        hint="Type then hit Enter key above"
+        label="Subtitles"
         v-model="article"
       />
 
-      <!--
-        A button with v-model set to submit.
-        v-model scope variable must be a strict Boolean
-      -->
-      <div class="row justify-end">
+      <div class="row ">
         <q-btn
           type="submit"
           :loading="submitting"
